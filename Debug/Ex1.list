@@ -327,40 +327,41 @@ int main(void)
  80002ec:	607b      	str	r3, [r7, #4]
   while (1)
   {
-	  clearAllClock();
- 80002ee:	f7ff ff2d 	bl	800014c <clearAllClock>
+
 	  if (second == 60){
- 80002f2:	687b      	ldr	r3, [r7, #4]
- 80002f4:	2b3c      	cmp	r3, #60	; 0x3c
- 80002f6:	d104      	bne.n	8000302 <main+0x36>
+ 80002ee:	687b      	ldr	r3, [r7, #4]
+ 80002f0:	2b3c      	cmp	r3, #60	; 0x3c
+ 80002f2:	d104      	bne.n	80002fe <main+0x32>
 		  minute++;
- 80002f8:	68bb      	ldr	r3, [r7, #8]
- 80002fa:	3301      	adds	r3, #1
- 80002fc:	60bb      	str	r3, [r7, #8]
+ 80002f4:	68bb      	ldr	r3, [r7, #8]
+ 80002f6:	3301      	adds	r3, #1
+ 80002f8:	60bb      	str	r3, [r7, #8]
 		  second = 0;
- 80002fe:	2300      	movs	r3, #0
- 8000300:	607b      	str	r3, [r7, #4]
+ 80002fa:	2300      	movs	r3, #0
+ 80002fc:	607b      	str	r3, [r7, #4]
 	  }
 	  if (minute == 60){
- 8000302:	68bb      	ldr	r3, [r7, #8]
- 8000304:	2b3c      	cmp	r3, #60	; 0x3c
- 8000306:	d104      	bne.n	8000312 <main+0x46>
+ 80002fe:	68bb      	ldr	r3, [r7, #8]
+ 8000300:	2b3c      	cmp	r3, #60	; 0x3c
+ 8000302:	d104      	bne.n	800030e <main+0x42>
 		  hour ++;
- 8000308:	68fb      	ldr	r3, [r7, #12]
- 800030a:	3301      	adds	r3, #1
- 800030c:	60fb      	str	r3, [r7, #12]
+ 8000304:	68fb      	ldr	r3, [r7, #12]
+ 8000306:	3301      	adds	r3, #1
+ 8000308:	60fb      	str	r3, [r7, #12]
 		  minute = 0;
- 800030e:	2300      	movs	r3, #0
- 8000310:	60bb      	str	r3, [r7, #8]
+ 800030a:	2300      	movs	r3, #0
+ 800030c:	60bb      	str	r3, [r7, #8]
 	  }
 	  if (hour == 12){
- 8000312:	68fb      	ldr	r3, [r7, #12]
- 8000314:	2b0c      	cmp	r3, #12
- 8000316:	d101      	bne.n	800031c <main+0x50>
+ 800030e:	68fb      	ldr	r3, [r7, #12]
+ 8000310:	2b0c      	cmp	r3, #12
+ 8000312:	d101      	bne.n	8000318 <main+0x4c>
 		  hour = 0;
- 8000318:	2300      	movs	r3, #0
- 800031a:	60fb      	str	r3, [r7, #12]
+ 8000314:	2300      	movs	r3, #0
+ 8000316:	60fb      	str	r3, [r7, #12]
 	  }
+	  clearAllClock();
+ 8000318:	f7ff ff18 	bl	800014c <clearAllClock>
 	  setNumberOnClock((second++) / 5);
  800031c:	687b      	ldr	r3, [r7, #4]
  800031e:	1c5a      	adds	r2, r3, #1
@@ -384,11 +385,12 @@ int main(void)
 	  setNumberOnClock(hour);
  8000348:	68f8      	ldr	r0, [r7, #12]
  800034a:	f7ff ff49 	bl	80001e0 <setNumberOnClock>
-	  HAL_Delay(1000);
- 800034e:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 8000352:	f000 f951 	bl	80005f8 <HAL_Delay>
-	  clearAllClock();
- 8000356:	e7ca      	b.n	80002ee <main+0x22>
+	  HAL_Delay(100);
+ 800034e:	2064      	movs	r0, #100	; 0x64
+ 8000350:	f000 f952 	bl	80005f8 <HAL_Delay>
+	  if (second == 60){
+ 8000354:	e7cb      	b.n	80002ee <main+0x22>
+ 8000356:	bf00      	nop
  8000358:	66666667 	.word	0x66666667
 
 0800035c <SystemClock_Config>:

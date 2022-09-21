@@ -192,7 +192,7 @@ int main(void)
   int second = 0;
   while (1)
   {
-	  clearAllClock();
+
 	  if (second == 60){
 		  minute++;
 		  second = 0;
@@ -204,10 +204,11 @@ int main(void)
 	  if (hour == 12){
 		  hour = 0;
 	  }
+	  clearAllClock();
 	  setNumberOnClock((second++) / 5);
 	  setNumberOnClock(minute / 5);
 	  setNumberOnClock(hour);
-	  HAL_Delay(1000);
+	  HAL_Delay(100);
 
 
     /* USER CODE END WHILE */
