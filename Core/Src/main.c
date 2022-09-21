@@ -190,6 +190,8 @@ int main(void)
   //int hour = 0;
   //int minute = 0;
   //int second = 0;
+  // Led 0 = 0;
+  GPIOA->ODR = 0xfff0;
   while (1)
   {
 	  /*
@@ -210,43 +212,8 @@ int main(void)
 	  setNumberOnClock(hour);
 	  HAL_Delay(1000);
 	  */
-	  HAL_GPIO_WritePin(Led_0_GPIO_Port, Led_0_Pin, 0);
+	  GPIOA->ODR = GPIOA->ODR << 1;
 	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_1_GPIO_Port, Led_1_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_2_GPIO_Port, Led_2_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_3_GPIO_Port, Led_3_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_4_GPIO_Port, Led_4_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_5_GPIO_Port, Led_5_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_6_GPIO_Port, Led_6_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_7_GPIO_Port, Led_7_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_8_GPIO_Port, Led_8_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_9_GPIO_Port, Led_9_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_10_GPIO_Port, Led_10_Pin, 0);
-	  HAL_Delay(1000);
-
-	  HAL_GPIO_WritePin(Led_11_GPIO_Port, Led_11_Pin, 0);
-	  HAL_Delay(1000);
-
-
 
     /* USER CODE END WHILE */
 
