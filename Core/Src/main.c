@@ -187,31 +187,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //int hour = 0;
-  //int minute = 0;
-  //int second = 0;
-  // Led 0 = 0;
+  // led0 = 0;
   GPIOA->ODR = 0xfff0;
   while (1)
   {
-	  /*
-	  clearAllClock();
-	  if (second == 60){
-		  minute++;
-		  second = 0;
-	  }
-	  if (minute == 60){
-		  hour ++;
-		  minute = 0;
-	  }
-	  if (hour == 12){
-		  hour = 0;
-	  }
-	  setNumberOnClock((second++) / 5);
-	  setNumberOnClock(minute / 5);
-	  setNumberOnClock(hour);
-	  HAL_Delay(1000);
-	  */
 	  GPIOA->ODR = GPIOA->ODR << 1;
 	  HAL_Delay(1000);
 

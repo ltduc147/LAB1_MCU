@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00002acb  00000000  00000000  00020035  2**0
+ 12 .debug_info   00002ac8  00000000  00000000  00020035  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000de8  00000000  00000000  00022b00  2**0
+ 13 .debug_abbrev 00000dd7  00000000  00000000  00022afd  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000003e8  00000000  00000000  000238e8  2**3
+ 14 .debug_aranges 000003e8  00000000  00000000  000238d8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000360  00000000  00000000  00023cd0  2**3
+ 15 .debug_ranges 00000360  00000000  00000000  00023cc0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00015568  00000000  00000000  00024030  2**0
+ 16 .debug_macro  00015568  00000000  00000000  00024020  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00004576  00000000  00000000  00039598  2**0
+ 17 .debug_line   00004572  00000000  00000000  00039588  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000797a9  00000000  00000000  0003db0e  2**0
+ 18 .debug_str    000797a9  00000000  00000000  0003dafa  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  000b72b7  2**0
+ 19 .comment      00000050  00000000  00000000  000b72a3  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000d94  00000000  00000000  000b7308  2**2
+ 20 .debug_frame  00000d94  00000000  00000000  000b72f4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -183,20 +183,17 @@ int main(void)
   /* USER CODE BEGIN 2 */
   clearAllClock();
  80001f0:	f7ff ffac 	bl	800014c <clearAllClock>
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //int hour = 0;
-  //int minute = 0;
-  //int second = 0;
-  // Led 0 = 0;
+  // led0 = 0;
   GPIOA->ODR = 0xfff0;
  80001f4:	4b06      	ldr	r3, [pc, #24]	; (8000210 <main+0x30>)
  80001f6:	f64f 72f0 	movw	r2, #65520	; 0xfff0
  80001fa:	60da      	str	r2, [r3, #12]
-	  setNumberOnClock((second++) / 5);
-	  setNumberOnClock(minute / 5);
-	  setNumberOnClock(hour);
-	  HAL_Delay(1000);
-	  */
+  while (1)
+  {
 	  GPIOA->ODR = GPIOA->ODR << 1;
  80001fc:	4b04      	ldr	r3, [pc, #16]	; (8000210 <main+0x30>)
  80001fe:	68db      	ldr	r3, [r3, #12]
