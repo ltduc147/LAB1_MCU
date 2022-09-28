@@ -385,12 +385,11 @@ int main(void)
 	  setNumberOnClock(hour);
  8000348:	68f8      	ldr	r0, [r7, #12]
  800034a:	f7ff ff49 	bl	80001e0 <setNumberOnClock>
-	  HAL_Delay(100);
- 800034e:	2064      	movs	r0, #100	; 0x64
- 8000350:	f000 f952 	bl	80005f8 <HAL_Delay>
+	  HAL_Delay(1000);
+ 800034e:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 8000352:	f000 f951 	bl	80005f8 <HAL_Delay>
 	  if (second == 60){
- 8000354:	e7cb      	b.n	80002ee <main+0x22>
- 8000356:	bf00      	nop
+ 8000356:	e7ca      	b.n	80002ee <main+0x22>
  8000358:	66666667 	.word	0x66666667
 
 0800035c <SystemClock_Config>:

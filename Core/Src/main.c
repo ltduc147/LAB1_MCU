@@ -208,7 +208,7 @@ int main(void)
 	  setNumberOnClock((second++) / 5);
 	  setNumberOnClock(minute / 5);
 	  setNumberOnClock(hour);
-	  HAL_Delay(100);
+	  HAL_Delay(1000);
 
 
     /* USER CODE END WHILE */
